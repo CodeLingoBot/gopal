@@ -2,6 +2,7 @@
 .args*
 pal
 gopal
+gopal-*.tar.gz
 cache/
 vendor/
 .vscode/

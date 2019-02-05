@@ -16,8 +16,9 @@ branches:
   - master
 addons:
   artifacts:
-    paths: ./gopal
+    paths:
+    - $(git ls-files -o | grep .tar.gz | tr "\n" ":")
     debug: true
     s3_region: eu-west-1
     s3_bucket: remerge-artifacts
-    target_paths: "$TRAVIS_REPO_SLUG/$TRAVIS_BRANCH"
+    target_paths: "$TRAVIS_REPO_SLUG"

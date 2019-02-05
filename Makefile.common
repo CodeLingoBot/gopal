@@ -53,6 +53,7 @@ clean:
 	cd $(GOSRCDIR) && \
 		go clean -i -x
 	rm -f $(MAIN)
+	rm -f $(MAIN)-*.tar.gz
 
 lint: build
 	cd $(GOSRCDIR) && \
@@ -98,10 +99,3 @@ proto: proto-dep $(PBGOS)
 
 $(PBGOS): %.pb.go: %.proto
 	protoc --gogofaster_out=. -I=.:$(TOP)/vendor:$(GOPATH)/src $<
-
-release:
-	git push origin master master:production
-
-deploy:
-	/bin/bash -c 'cd ../chef.new && knife ssh roles:$(PROJECT) sudo chef-client'
-	/bin/bash -c 'cd ../chef && knife sudo -Q roles:$(PROJECT) chef-client'
