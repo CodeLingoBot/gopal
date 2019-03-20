@@ -38,7 +38,7 @@ func NewBuilder(fields []string) *Builder {
 	}
 }
 
-// does the id lookup for us
+// AddRow does the id lookup for us
 func (b *Builder) AddRow(values []string) {
 	// TODO : error checks
 	i := b.fields["id"]
